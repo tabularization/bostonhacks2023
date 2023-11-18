@@ -1,1 +1,24 @@
-some scriptp lol
+function sendStoryPrompt() {
+    let data = {
+        story: document.getElementById('story').value,
+        context: [],
+        text: ""
+    }
+
+    fetch('/api', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Success:');
+            console.log(data);
+        })
+        .catch((error) => {
+            console.error('Error:');
+            console.error(error);
+        });
+}

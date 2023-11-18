@@ -9,7 +9,7 @@ client_bp.template_folder = "templates"
 @client_bp.route("/")
 def index():
     """Return the index page."""
-    return "Hello, World!"
+    return render_template("index.html")
 
 @client_bp.route("/script.js")
 def script():
@@ -20,3 +20,8 @@ def script():
 def style():
     """Return the style.css file."""
     return client_bp.send_static_file("styles.css")
+
+@client_bp.route("/background.png")
+def background():
+    """Return the background.png file."""
+    return client_bp.send_static_file("background.png")
