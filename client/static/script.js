@@ -1,21 +1,24 @@
-document.querySelector('.search-box a').addEventListener('click', function(e) {
-    e.preventDefault();
-    var inputValue = document.querySelector('.search-box input').value;
-    
-    var data = { search: inputValue }; // This is the data we want to send in JSON format
+function sendStoryPrompt() {
+    let data = {
+        story: document.getElementById('story').value,
+        context: [],
+        text: ""
+    }
 
     fetch('/api', {
-        method: 'POST', // or 'PUT'
+        method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify(data)
     })
-    .then(response => response.json())
-    .then(data => {
-        console.log('Success:', data);
-    })
-    .catch((error) => {
-        console.error('Error:', error);
-    });
-});
+        .then(response => response.json())
+        .then(data => {
+            console.log('Success:');
+            console.log(data);
+        })
+        .catch((error) => {
+            console.error('Error:');
+            console.error(error);
+        });
+}

@@ -3,13 +3,12 @@
 import os
 from dotenv import load_dotenv
 from openai import OpenAI
-from openai import Images, ImagesResponse
-import api.summary
+from api.summary import summarize
 from flask import Blueprint, request
 import random
 
 client = None
-IMG_PROB = 0.15
+IMG_PROB = 0.05
 
 prompt = """
 Continue the story based on context and current user input. 
@@ -25,7 +24,6 @@ def init():
     client = OpenAI(
         api_key=os.getenv("OPENAI_KEY"),
     )
-    api.summary.init()
 
 # ===============================================================================
 context = []
@@ -44,7 +42,7 @@ def add_context(text):
         context = context[-5:]
 # ===============================================================================
 # make api calls
-def get_response(prompt, story, context, text):
+def get_response(prompt, story, contextStr, text):
     """Get a response from the API."""
     # create a context
 
@@ -52,32 +50,35 @@ def get_response(prompt, story, context, text):
         messages=[
             {
                 "role": "system",
-                "content": prompt + "\n\n" + story + "\n\n" + "\n\n".join(context) + "\n\n" + "User: " + text
+                "content": prompt + "\n\n" + story + "\n\n" + "\n\n".join(contextStr) + "\n\n" + "User: " + text
             },
         ],
         model="gpt-3.5-turbo-1106",
         max_tokens=150
     )
     # get content from response
+    print(response)
     content = response.choices[0].message.content
-    print(content)
     # add to summary
-    context.append(api.summary.summarize(content, 1))
+    context.append(summarize(content, 1))
 
     result = {
         "text": content,
         "image": "n/a",
     }
+
     # roll a probability for an image
     if random.random() < IMG_PROB:
-        url = client.images.generate(
+        imageResponse = client.images.generate(
             prompt="Generate image based on this story: " + story + "\n\n" + "\n\n".join(context) + "\n\n" + "User: " + text,
             model="dall-e-2",
             n=1,
             response_format="url",
             size="256x256",   
         )
-        result["image"] = url
+        print(imageResponse)
+        result["image"] = imageResponse.data[0].url
+    print(result)
     return result
     
 # ===============================================================================
