@@ -10,3 +10,13 @@ client_bp.template_folder = "templates"
 def index():
     """Return the index page."""
     return "Hello, World!"
+
+@client_bp.route("/script.js")
+def script():
+    """Return the script.js file."""
+    return client_bp.send_static_file("script.js")
+
+@client_bp.route("/styles.css")
+def style():
+    """Return the style.css file."""
+    return client_bp.send_static_file("styles.css")
