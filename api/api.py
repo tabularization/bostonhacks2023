@@ -3,10 +3,13 @@
 import os
 from dotenv import load_dotenv
 from openai import OpenAI
+from openai import Images, ImagesResponse
 import api.summary
 from flask import Blueprint, request
+import random
 
 client = None
+IMG_PROB = 0.15
 
 prompt = """
 Continue the story based on context and current user input. 
@@ -60,6 +63,22 @@ def get_response(prompt, story, context, text):
     print(content)
     # add to summary
     context.append(api.summary.summarize(content, 1))
+
+    result = {
+        "text": content,
+        "image": "n/a",
+    }
+    # roll a probability for an image
+    if random.random() < IMG_PROB:
+        url = client.images.generate(
+            prompt="Generate image based on this story: " + story + "\n\n" + "\n\n".join(context) + "\n\n" + "User: " + text,
+            model="dall-e-2",
+            n=1,
+            response_format="url",
+            size="256x256",   
+        )
+        result["image"] = url
+    return result
     
 # ===============================================================================
 
@@ -69,5 +88,7 @@ api_bp = Blueprint("api", __name__)
 def api():
     """Handle API requests."""
     data = request.json
-
-    return "Hello world"
+    story = data["story"]
+    context = " ".join(data["context"])
+    userInput = data["text"]
+    return get_response(prompt, story, context, userInput)
