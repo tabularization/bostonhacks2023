@@ -3,7 +3,8 @@
 import os
 from dotenv import load_dotenv
 from openai import OpenAI
-import summary
+import api.summary
+from flask import Blueprint, request
 
 client = None
 
@@ -11,7 +12,6 @@ prompt = """
 Continue the story based on context and current user input. 
 Do not deviate from the story. After each interaction, 
 add event that advances said story by guiding the user. Max length 150"""
-story = "You wake up in a post-apocalyptic world"
 
 def init():
     """Initialize the API."""
@@ -22,7 +22,7 @@ def init():
     client = OpenAI(
         api_key=os.getenv("OPENAI_KEY"),
     )
-    summary.init()
+    api.summary.init()
 
 # ===============================================================================
 context = []
@@ -37,11 +37,11 @@ def add_context(text):
     global context
     context.append(text)
     # remove summary if it gets too long
-    if len(summary) > 5:
-        summary = summary[-5:]
+    if len(context) > 5:
+        context = context[-5:]
 # ===============================================================================
 # make api calls
-def get_response(text):
+def get_response(prompt, story, context, text):
     """Get a response from the API."""
     # create a context
 
@@ -59,12 +59,15 @@ def get_response(text):
     content = response.choices[0].message.content
     print(content)
     # add to summary
-    context.append(summary.summarize(content, 1))
+    context.append(api.summary.summarize(content, 1))
     
+# ===============================================================================
 
-# test
-if __name__ == "__main__":
-    init()
-    while True:
-        text = input("You: ")
-        get_response(text)
+api_bp = Blueprint("api", __name__)
+
+@api_bp.route("/api", methods=["POST"])
+def api():
+    """Handle API requests."""
+    data = request.json
+
+    return "Hello world"
