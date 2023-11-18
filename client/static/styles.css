@@ -79,7 +79,7 @@ body {
 }
 
 .main-container h2 {
-    font-size: 2rem;
+    font-size: 2.5rem;
 }
 
 span {
@@ -88,8 +88,14 @@ span {
 
 
 /* search bar */
+.search-box {
+    display: flex;
+    justify-content: center;
+    margin-top: 5rem;
+}
+
 .box {
-    height: 30px;
+    height: 50px;
     display: flex;
     cursor: pointer;
     padding: 10px 20px;
@@ -114,5 +120,9 @@ span {
 
 .box a .fas{
     color: #D90B91;
-    font-size: 20px; 
+    font-size: 2rem; 
+}
+
+input[type="text"][placeholder="Search..."] {
+    font-size: 2rem;
 }
