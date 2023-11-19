@@ -9,8 +9,8 @@ import random
 
 client = None
 IMG_PROB = 0.35
-# engine = "gpt-3.5-turbo-1106"
-engine = "gpt-4"
+engine = "gpt-3.5-turbo-1106"
+# engine = "gpt-4"
 # imgEngine = "dall-e-2"
 imgEngine = "dall-e-3"
 
