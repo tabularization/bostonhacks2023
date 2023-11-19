@@ -8,6 +8,4 @@ app.register_blueprint(client_bp)
 app.register_blueprint(api_bp)
 
 if __name__ == "__main__":
-    api.api.init()
-    api.summary.init()
     app.run()
