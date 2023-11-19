@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 let count = 0;
 let arr = [];
 
@@ -16,14 +17,26 @@ document.querySelector('.search-box a').addEventListener('click', function(e) {
     // the server will then return the next api request, which will be displayed on the screen
     var data = { story: inputValue }; // This is the data we want to send in JSON format
 
+=======
+let boxContainer = document.querySelector('#search-box');
+
+
+function sendStoryPrompt() {
+    let data = {
+        story: document.getElementById('story').value,
+        context: [],
+        text: ""
+    }
+>>>>>>> 401304174fcb5c9d6b54afdc6a37e90c5cb13e33
 
     fetch('/api', {
-        method: 'POST', // or 'PUT'
+        method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify(data)
     })
+<<<<<<< HEAD
     .then(response => response.json())
     .then(data => {
         console.log('Success:', data);
@@ -35,3 +48,17 @@ document.querySelector('.search-box a').addEventListener('click', function(e) {
 });
 
 
+=======
+        .then(response => response.json())
+        .then(data => {
+            console.log('Success:');
+            console.log(data);
+            document.createElement('p').innerHTML = data.text;
+
+        })
+        .catch((error) => {
+            console.error('Error:');
+            console.error(error);
+        });
+}
+>>>>>>> 401304174fcb5c9d6b54afdc6a37e90c5cb13e33
