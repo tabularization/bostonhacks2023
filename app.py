@@ -10,4 +10,4 @@ app.register_blueprint(api_bp)
 if __name__ == "__main__":
     api.api.init()
     api.summary.init()
-    app.run()
+    app.run(host="localhost", port=8000)

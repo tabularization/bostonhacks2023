@@ -82,3 +82,34 @@ function customPrompt() {
     let prompt = document.querySelector('#story').value;
     sendStoryPrompt(prompt);
 }
+
+// Select the elements you want to animate
+const elements = document.querySelectorAll('.animate');
+
+// Define the options for the Intersection Observer
+const observerOptions = {
+  root: null, // Use the viewport as the root
+  rootMargin: '0px',
+  threshold: 0.1 // Trigger the callback when 10% of the element is visible
+};
+
+// Define the callback for the Intersection Observer
+const observerCallback = (entries, observer) => {
+  entries.forEach(entry => {
+    // If the element is visible, add the 'active' class
+    if (entry.isIntersecting) {
+      entry.target.classList.add('active');
+      // Stop observing the element
+      observer.unobserve(entry.target);
+    } else {
+      // If the element is not visible, remove the 'active' class
+      entry.target.classList.remove('active');
+    }
+  });
+};
+
+// Create the Intersection Observer
+const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+// Start observing the elements
+elements.forEach(element => observer.observe(element));

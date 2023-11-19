@@ -28,7 +28,9 @@
     justify-content: center;
     align-items: center;
     letter-spacing: 1.5px;
+    margin-right: 13rem;
   }
+
   
   .navbar a {
     float: left;
@@ -52,7 +54,7 @@
     border-radius: 5px;
     padding: 10px 20px;
     font-weight: 700;
-    font-size: 2rem;
+    font-size: 2.3rem;
   }
   .book .texttale {
     display: inline;
@@ -109,7 +111,7 @@
   .search-box {
     display: flex;
     justify-content: center;
-    margin-top: 5rem;
+    padding: 5rem 0rem;
   }
   
   .box {
@@ -139,8 +141,9 @@
     margin-left: -5px;
   }
   
-  input[type="text"] {
-    font-size: 3rem;
+  input[type="text"]{
+    font-size: 2rem;
+    width: 500px;
   }
   
   h1,
@@ -203,24 +206,22 @@
   .genres h2 {
       font-size: 5rem;
   }
-  .genres a {
-      text-align: center;
+
+  .genres button {
+    border: none;
+    text-align: center;
     text-decoration: none;
     font-size: 5rem;
     padding: 10rem 10rem;
     color: var(--primary-color);
-    width: 100%; 
-    height: 100%; 
+    width: 100%;
+    height: 100%;
     border-radius: 1.2rem;
     box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.4);
   }
   
   #fantasy {
     background-image: url("fantasy.jpeg");
-  }
-  
-  #fantasy:hover {
-    opacity: 1;
   }
   
   #sci-fi {
@@ -246,7 +247,29 @@
   #fantasy, #sci-fi, #romance, #horror, #adventure, #mystery{
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9); /* This adds a dark shadow to the text */
       background-size: cover;
+      transition: all 0.4s ease-in-out;
       opacity: 0.8;
   }
 
+#fantasy:hover, 
+#sci-fi:hover, 
+#romance:hover, 
+#horror:hover, 
+#adventure:hover, 
+#mystery:hover {
+      opacity: 1;
+  }
+  
+  .animate {
+    opacity: 0;
+    transform: translateX(-100px);
+    filter: blur(5px);
+    transition: opacity 1s, transform 1s, filter 1s;
+  }
+  
+  .animate.active {
+    opacity: 1;
+    transform: translateX(0);
+    filter: blur(0);
+  }
   
