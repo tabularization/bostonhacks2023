@@ -9,23 +9,12 @@ import random
 
 client = None
 IMG_PROB = 0.05
-
 engine = "gpt-3.5-turbo-1106"
 # engine = "gpt-4"
 imgEngine = "dall-e-2"
 # imgEngine = "dall-e-3"
 
 prompt = "Continue story from context & user input. Dont deviate from story. Add event that advances story discreetly, guiding user. Max length 150"""
-initialized = False
-def init():
-    """Initialize the API."""
-    # load .env file
-    load_dotenv()
-    # set openai key
-    global client
-    client = OpenAI()
-    global initialized
-    initialized = True
 
 # ===============================================================================
 context = []
@@ -33,7 +22,7 @@ def get_context():
     # lets the ai remember the last few interactions
     global context
     if len(context) > 5:
-        context = context[-5:]
+        context = cfontext[-5:]
     return context
 
 def add_context(text):
@@ -45,10 +34,9 @@ def add_context(text):
 # ===============================================================================
 # make api calls
 def get_response(prompt, story, contextStr, text):
-    if not initialized:
-        print("Initializing API...")
-        init()
     """Get a response from the API."""
+    load_dotenv()
+    client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
     # create a context
 
     response = client.chat.completions.create(
