@@ -1,0 +1,5 @@
+When completed:
+- Change text to gpt4 in api.py
+- Change image gen to dalle3 in api.py
+- Change context max size to 10 in api.py
+- Change context max size to 10 in chat_script.js
