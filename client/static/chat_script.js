@@ -75,8 +75,8 @@ function sendStoryResponse() {
             // add the context to the current context
             currentContext.push(data.text);
 
-            // remove the first element of the current context if it is longer than 5
-            if (currentContext.length > 5) {
+            // remove the first element of the current context if it is longer than 10
+            if (currentContext.length > 10) {
                 currentContext.shift();
             }
         })
