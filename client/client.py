@@ -25,3 +25,8 @@ def style():
 def background():
     """Return the background.png file."""
     return client_bp.send_static_file("background.png")
+
+@client_bp.route("/booklogo.png")
+def booklogo():
+    """Return the background.png file."""
+    return client_bp.send_static_file("booklogo.png")

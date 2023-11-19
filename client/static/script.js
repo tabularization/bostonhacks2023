@@ -1,3 +1,6 @@
+let boxContainer = document.querySelector('#search-box');
+
+
 function sendStoryPrompt() {
     let data = {
         story: document.getElementById('story').value,
@@ -16,6 +19,8 @@ function sendStoryPrompt() {
         .then(data => {
             console.log('Success:');
             console.log(data);
+            document.createElement('p').innerHTML = data.text;
+
         })
         .catch((error) => {
             console.error('Error:');
