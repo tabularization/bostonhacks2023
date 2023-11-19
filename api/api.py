@@ -26,6 +26,7 @@ def init():
     client = OpenAI(
         api_key=os.getenv("OPENAI_KEY"),
     )
+    global initialized
     initialized = True
 
 # ===============================================================================
@@ -47,6 +48,7 @@ def add_context(text):
 # make api calls
 def get_response(prompt, story, contextStr, text):
     if not initialized:
+        print("Initializing API...")
         init()
     """Get a response from the API."""
     # create a context

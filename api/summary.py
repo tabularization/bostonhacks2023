@@ -11,6 +11,7 @@ initialized = False
 def init():
     global nlp
     nlp = spacy.load('en_core_web_sm')
+    global initialized
     initialized = True
 
 def summarize(text, n):
