@@ -164,3 +164,139 @@ h2, .thrilling{
     margin-top:-10px;
 
 }
+
+/* New styles for contact added */
+#contact{
+    font-size:55px;
+    margin-left:175px;
+    margin-top:100px;
+    color:#D90B91;
+}
+
+#sendmsg{
+  font-size:40px;
+  color:gainsboro;
+
+}
+
+#message{
+    font-size:40px;
+    margin-left:20px;
+    margin-top:-10px;
+    color:gainsboro;
+    
+}
+
+.text input,
+.text textarea{
+    width: 250px; /* Adjust the width as needed */
+    height: 65px; /* Adjust the height as needed */
+    font-size:25px;
+    padding:15px;
+    margin-left:300px;
+    margin-top:90px;
+    border:solid black 3.25px;
+    border-radius:5px;
+    position:absolute;
+}
+
+.email input,
+.email textarea{
+    width: 250px; /* Adjust the width as needed */
+    height: 65px; /* Adjust the height as needed */
+    font-size:25px;
+    padding:15px;
+    margin-left:300px;
+    margin-top:190px;
+    border:solid black 3.25px;
+    border-radius:5px;
+    position:absolute;
+}
+
+.message1 input,
+.message1 textarea{
+    width: 250px; /* Adjust the width as needed */
+    height: 65px; /* Adjust the height as needed */
+    font-size:25px;
+    padding:15px;
+    margin-left:300px;
+    margin-top:300px;
+    border:solid black 3.25px;
+    border-radius:5px;
+    position:absolute;
+}
+
+#sendmsg{
+    font-size:35px;
+    margin-left:175px;
+    margin-top:-16px;
+    color:gainsboro;
+    position:absolute;
+}
+
+.sbmitbutton input,
+.sbmitbutton textarea{
+    margin-left:300px;
+    margin-top:20px;
+    height:50px;
+    width:150px;
+    font-size:30px;
+    background:#cc99ff;
+    border:solid black 3.25px;
+    border-radius:5px;
+}
+
+.sbmitbutton {
+    margin-left: 300px;
+    margin-top: 390px;
+    height: 65px;
+    width: 250px;
+    font-size: 40px;
+    background: #D90B91;
+    border: solid black 3.25px;
+    border-radius: 5px;
+    position:absolute;
+    letter-spacing:1.5px;
+}
+
+.sbmitbutton input:hover{
+    background-color:skyblue;
+}
+
+#loal{
+    position:absolute;
+    top:0;
+    margin-top:245px;
+    height:auto;
+    width:85px;
+    margin-left:210px;
+}
+
+#loal1{
+    position:absolute;
+    top:0;
+    height:auto;
+    width:100px;
+    margin-top:350px;
+    margin-left:200px;
+}
+
+#loal2{
+    position:absolute;
+    top:0;
+    height:auto;
+    width:130px;
+    margin-top:425px;
+    margin-left:184px;
+}
+
+#submitpng{
+    position:absolute;
+    top:0;
+    height:auto;
+    width:100px;
+    margin-top:540px;
+    margin-left:195px;
+
+}
+
