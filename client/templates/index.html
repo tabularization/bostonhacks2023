@@ -47,14 +47,14 @@
     <div class="genres animate" id="genres">
         <h2>Choose a Genre!</h2>
         <div class="row-one">
-            <button id="fantasy" onclick="createFantasy();">Fantasy</button>
-            <button id="sci-fi" onclick="createSciFi();">Sci-Fi</button>
-            <button id="adventure" onclick="createAdventure();">Adventure</button>
+            <button class="option" id="fantasy" onclick="createFantasy();">Fantasy</button>
+            <button class="option" id="sci-fi" onclick="createSciFi();">Sci-Fi</button>
+            <button class="option" id="adventure" onclick="createAdventure();">Adventure</button>
         </div>
         <div class="row-two">
-            <button id="romance" onclick="createRomance();">Romance</button>
-            <button id="horror" onclick="createHorror();">Horror</button>
-            <button id="mystery" onclick="createMystery();">Mystery</button>
+            <button class="option" id="romance" onclick="createRomance();">Romance</button>
+            <button class="option" id="horror" onclick="createHorror();">Horror</button>
+            <button class="option" id="mystery" onclick="createMystery();">Mystery</button>
         </div>
     </div>
 
@@ -63,10 +63,17 @@
       <div class="box">
           <input type="text" placeholder="Or enter your own prompt..." id="story">
           <a href='#'>
-           <i class="fas fa-search" onclick="customPrompt()"></i>
+           <i class="fas fa-search option" onclick="customPrompt()"></i>
           </a>
          </div>
     </div>
+
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <p>Please wait a bit for the story to load!</p>
+      </div>
+    </div>
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"

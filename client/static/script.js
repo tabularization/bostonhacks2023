@@ -113,3 +113,25 @@ const observer = new IntersectionObserver(observerCallback, observerOptions);
 
 // Start observing the elements
 elements.forEach(element => observer.observe(element));
+
+
+// Modal func
+var modal = document.getElementById("myModal");
+var btns = document.querySelectorAll(".option");
+var span = document.getElementsByClassName("close")[0];
+
+for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener('click', function() {
+    modal.style.display = "block";
+    setTimeout(function() {
+      modal.style.display = "none";
+    }, 3000); 
+  });
+}
+
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
