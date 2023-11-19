@@ -30,3 +30,18 @@ def background():
 def booklogo():
     """Return the background.png file."""
     return client_bp.send_static_file("booklogo.png")
+
+@client_bp.route("/chat", methods=["POST", "GET"])
+def char():
+    """Return the chat page."""
+    return render_template("chat.html")
+
+@client_bp.route("/chat_script.js")
+def chat_script():
+    """Return the chat_script.js file."""
+    return client_bp.send_static_file("chat_script.js")
+
+@client_bp.route("/chat_styles.css")
+def chat_style():
+    """Return the chat_styles.css file."""
+    return client_bp.send_static_file("chat_styles.css")

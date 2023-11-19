@@ -1,0 +1,45 @@
+:root {
+    --bg-color: #201f40;
+    --primary-color: #fff6f6;
+    --secondary-color: #a61473;
+    --accent-color: #D90B91;
+}
+
+* {
+    color: white;
+}
+
+body {
+    background-color: var(--bg-color);
+    font-family: 'VT323', monospace;
+    height: 100vh;
+}
+
+#chat-box {
+    height: 90vh;
+    max-height: 90vh;
+    width: 100vw;
+    overflow-y: auto;
+}
+
+.storyteller-text {
+    background-color: #16152c;
+    display: flex;
+    padding-left: 10px;
+    border-radius: 5px;
+    max-width: 100%;
+    word-wrap: break-word;
+    margin-bottom: 5px;
+    color:rgb(165, 211, 249);
+}
+
+.user-text {
+    background-color: #16152c;
+    padding-right: 10px;
+    text-align: right;
+    border-radius: 5px;
+    max-width: 100%;
+    word-wrap: break-word;
+    justify-content: flex-end;
+    margin-bottom: 5px;
+}
