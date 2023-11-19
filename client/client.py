@@ -61,6 +61,31 @@ def scifi():
     """Return the background.png file."""
     return client_bp.send_static_file("img/sci-fi.jpeg")
 
+@client_bp.route("/chat.png")
+def chat():
+    """Return the background.png file."""
+    return client_bp.send_static_file("img/chat.png")
+
+@client_bp.route("/email.png")
+def email():
+    """Return the background.png file."""
+    return client_bp.send_static_file("img/email.png")
+
+@client_bp.route("/person.png")
+def person():
+    """Return the background.png file."""
+    return client_bp.send_static_file("img/person.png")
+
+@client_bp.route("/play.png")
+def play():
+    """Return the background.png file."""
+    return client_bp.send_static_file("img/play.png")
+
+@client_bp.route("/submit.png")
+def submit():
+    """Return the background.png file."""
+    return client_bp.send_static_file("img/submit.png")
+
 story = ""
 @client_bp.route("/chat", methods=["GET", "POST"])
 def char():
@@ -82,3 +107,7 @@ def chat_script():
 def chat_style():
     """Return the chat_styles.css file."""
     return client_bp.send_static_file("chat_styles.css")
+
+@client_bp.route('/contact')
+def contact():
+    return render_template('contact.html')
