@@ -1,5 +1,4 @@
 from flask import Flask
-import client
 import api
 from client.client import client_bp
 from api.api import api_bp
