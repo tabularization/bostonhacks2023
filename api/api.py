@@ -23,9 +23,7 @@ def init():
     load_dotenv()
     # set openai key
     global client
-    client = OpenAI(
-        api_key=os.getenv("OPENAI_KEY"),
-    )
+    client = OpenAI()
     global initialized
     initialized = True
 
