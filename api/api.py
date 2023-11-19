@@ -22,7 +22,7 @@ def get_context():
     # lets the ai remember the last few interactions
     global context
     if len(context) > 5:
-        context = cfontext[-5:]
+        context = context[-5:]
     return context
 
 def add_context(text):
@@ -35,8 +35,7 @@ def add_context(text):
 # make api calls
 def get_response(prompt, story, contextStr, text):
     """Get a response from the API."""
-    load_dotenv()
-    client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+    client = OpenAI()
     # create a context
 
     response = client.chat.completions.create(
