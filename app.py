@@ -7,4 +7,5 @@ app = Flask(__name__)
 app.register_blueprint(client_bp)
 app.register_blueprint(api_bp)
 
-app.run()
+if __name__ == "__main__":
+    app.run()
