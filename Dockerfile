@@ -10,4 +10,4 @@ COPY . .
 
 EXPOSE 5000
 
-CMD ["gunicorn", "-c", "config/gunicorn_conf.py", "app:app"]
+CMD ["gunicorn", "app:app"]
