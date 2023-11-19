@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, request
 
 # register a client blueprint
 client_bp = Blueprint("client", __name__)
@@ -61,10 +61,17 @@ def scifi():
     """Return the background.png file."""
     return client_bp.send_static_file("img/sci-fi.jpeg")
 
-@client_bp.route("/chat", methods=["POST", "GET"])
+story = ""
+@client_bp.route("/chat", methods=["GET", "POST"])
 def char():
     """Return the chat page."""
-    return render_template("chat.html")
+    if request.method == "POST":
+        data = request.json
+        global story
+        story = data["story"]
+        return ":D"
+    else:
+        return render_template("chat.html", story=story)
 
 @client_bp.route("/chat_script.js")
 def chat_script():
