@@ -10,10 +10,12 @@ import random
 client = None
 IMG_PROB = 0.05
 
-prompt = """
-Continue the story based on context and current user input. 
-Do not deviate from the story. After each interaction, 
-add event that advances said story by guiding the user. Max length 150"""
+engine = "gpt-3.5-turbo-1106"
+# engine = "gpt-4"
+imgEngine = "dall-e-2"
+# imgEngine = "dall-e-3"
+
+prompt = "Continue story from context & user input. Dont deviate from story. Add event that advances story discreetly, guiding user. Max length 150"""
 
 def init():
     """Initialize the API."""
@@ -50,14 +52,13 @@ def get_response(prompt, story, contextStr, text):
         messages=[
             {
                 "role": "system",
-                "content": prompt + "\n\n" + story + "\n\n" + "\n\n".join(contextStr) + "\n\n" + "User: " + text
+                "content": prompt + "\n\n" + story + "\n\n" + "\n\n".join(contextStr) + "\n\n" + "User: " + text + "."
             },
         ],
-        model="gpt-3.5-turbo-1106",
-        max_tokens=150
+        model=engine,
+        max_tokens=175
     )
     # get content from response
-    print(response)
     content = response.choices[0].message.content
     # add to summary
     context.append(summarize(content, 1))
@@ -70,15 +71,12 @@ def get_response(prompt, story, contextStr, text):
     # roll a probability for an image
     if random.random() < IMG_PROB:
         imageResponse = client.images.generate(
-            prompt="Generate image based on this story: " + story + "\n\n" + "\n\n".join(context) + "\n\n" + "User: " + text,
-            model="dall-e-2",
+            prompt="Be accurate to the story. Generate scene based on this story: " + story + "\n\n" + "\n\n".join(context) + "\n\n" + "User: " + text,
+            model=imgEngine,
             n=1,
             response_format="url",
-            size="256x256",   
         )
-        print(imageResponse)
         result["image"] = imageResponse.data[0].url
-    print(result)
     return result
     
 # ===============================================================================

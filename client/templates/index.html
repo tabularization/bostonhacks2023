@@ -47,14 +47,14 @@
     <div class="genres">
         <h2>Choose a Genre!</h2>
         <div class="row-one">
-            <a href="" id="fantasy">Fantasy</a>
-            <a href="" id="sci-fi">Sci-Fi</a>
-            <a href="" id="adventure">Adventure</a>
+            <button id="fantasy" onclick="createFantasy();">Fantasy</button>
+            <button id="sci-fi" onclick="createSciFi();">Sci-Fi</button>
+            <button id="adventure" onclick="createAdventure();">Adventure</button>
         </div>
         <div class="row-two">
-            <a href="" id="romance">Romance</a>
-            <a href="" id="horror">Horror</a>
-            <a href="" id="mystery">Mystery</a>
+            <button id="romance" onclick="createRomance();">Romance</button>
+            <button id="horror" onclick="createHorror();">Horror</button>
+            <button id="mystery" onclick="createMystery();">Mystery</button>
         </div>
     </div>
 
@@ -63,7 +63,7 @@
       <div class="box">
           <input type="text" placeholder="Or enter your own prompt..." id="story">
           <a href='#'>
-           <i class="fas fa-search" onclick="sendStoryPrompt()"></i>
+           <i class="fas fa-search" onclick="customPrompt()"></i>
           </a>
          </div>
     </div>
