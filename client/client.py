@@ -21,15 +21,45 @@ def style():
     """Return the style.css file."""
     return client_bp.send_static_file("styles.css")
 
-@client_bp.route("/background.png")
-def background():
+@client_bp.route("/main.png")
+def main():
     """Return the background.png file."""
-    return client_bp.send_static_file("background.png")
+    return client_bp.send_static_file("img/main.png")
 
 @client_bp.route("/booklogo.png")
 def booklogo():
     """Return the background.png file."""
-    return client_bp.send_static_file("booklogo.png")
+    return client_bp.send_static_file("img/booklogo.png")
+
+@client_bp.route("/adventure.jpeg")
+def adventure():
+    """Return the background.png file."""
+    return client_bp.send_static_file("img/adventure.jpeg")
+
+@client_bp.route("/fantasy.jpeg")
+def fantasy():
+    """Return the background.png file."""
+    return client_bp.send_static_file("img/fantasy.jpeg")
+
+@client_bp.route("/horror.jpeg")
+def horror():
+    """Return the background.png file."""
+    return client_bp.send_static_file("img/horror.jpeg")
+
+@client_bp.route("/mystery.jpeg")
+def mystery():
+    """Return the background.png file."""
+    return client_bp.send_static_file("img/mystery.jpeg")
+
+@client_bp.route("/romance.jpeg")
+def romance():
+    """Return the background.png file."""
+    return client_bp.send_static_file("img/romance.jpeg")
+
+@client_bp.route("/sci-fi.jpeg")
+def scifi():
+    """Return the background.png file."""
+    return client_bp.send_static_file("img/sci-fi.jpeg")
 
 @client_bp.route("/chat", methods=["POST", "GET"])
 def char():
