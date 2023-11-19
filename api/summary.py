@@ -7,11 +7,15 @@ from heapq import nlargest
 # https://medium.com/analytics-vidhya/text-summarization-using-spacy-ca4867c6b744
 
 nlp = None
+initialized = False
 def init():
     global nlp
     nlp = spacy.load('en_core_web_sm')
+    initialized = True
 
 def summarize(text, n):
+    if not initialized:
+        init()
     # print current time
     global nlp
     doc = nlp(text)

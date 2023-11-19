@@ -7,6 +7,4 @@ app = Flask(__name__)
 app.register_blueprint(client_bp)
 app.register_blueprint(api_bp)
 
-api.api.init()
-api.summary.init()
 app.run()

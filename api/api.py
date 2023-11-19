@@ -16,7 +16,7 @@ imgEngine = "dall-e-2"
 # imgEngine = "dall-e-3"
 
 prompt = "Continue story from context & user input. Dont deviate from story. Add event that advances story discreetly, guiding user. Max length 150"""
-
+initialized = False
 def init():
     """Initialize the API."""
     # load .env file
@@ -26,6 +26,7 @@ def init():
     client = OpenAI(
         api_key=os.getenv("OPENAI_KEY"),
     )
+    initialized = True
 
 # ===============================================================================
 context = []
@@ -45,6 +46,8 @@ def add_context(text):
 # ===============================================================================
 # make api calls
 def get_response(prompt, story, contextStr, text):
+    if not initialized:
+        init()
     """Get a response from the API."""
     # create a context
 
